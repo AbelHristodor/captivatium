@@ -1,0 +1,105 @@
+@import '../../variables';
+
+.navbar-wrapper {
+    background-color: $bg-color !important;
+}
+.navbar {
+    padding: 2vw 2.5vw 0 2.5vw !important;
+    font-size: 18px;
+
+    .navbar-brand {
+        .mobile-only {
+            display: none !important;
+        }
+    }
+    .navbar-menu {
+        margin-right: 15%;
+    }
+    .nav-link {
+        margin-right: 2.5rem;
+        color: lightgray;
+        transition: 0.3s;
+
+        .underline {
+            height: 2px;
+            width: 0%;
+            transition: width 0.2s ease-in-out;
+        }
+        &:hover .underline {
+            background-color: white;
+            width: 0.6rem;
+        }
+        &:hover {
+            color: white !important;
+        }
+    }
+    .active {
+        color: white;
+
+        .underline {
+            width: 0.6rem;
+            background-color: white;
+        }
+    }
+    .navbar-icons {
+        margin: 0 0 0 2.4rem;
+        
+        a {
+            opacity: .5;
+            transition: opacity .2s ease-in-out;
+        }
+        a:hover {
+            opacity: 1;
+        }
+    }
+    .navbar-toggler {
+        border: none !important;
+        box-shadow: none !important;
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar {
+        .navbar-icons {
+            display: none !important;
+        }
+        .navbar-menu a{
+            padding-top: 1rem;
+
+            &:first-child {
+                padding-top: 3rem;
+            }
+            &:last-child {
+                padding-bottom: 10%;
+            }
+        }
+        .navbar-brand {
+            .mobile-only {
+                display: none !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    .navbar {
+        padding: 3.2vh !important;
+        font-size: 4vw !important;
+
+        .navbar-brand {
+            .mobile-only {
+                display: inline-block !important;
+            }
+            img:first-child {
+                display: none !important;
+            }
+            img:nth-of-type(2) {
+                margin: 0 .75rem;
+            }
+        }
+    }
+}

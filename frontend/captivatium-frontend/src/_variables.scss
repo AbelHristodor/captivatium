@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'neue-haas-light';
+    src: url('./assets//fonts/neue-haas-font/NeueHaasDisplayLight.woff') format('woff');
+}
+@font-face {
+    font-family: 'neue-haas-roman';
+    src: url('./assets//fonts/neue-haas-font/NeueHaasDisplayRoman.woff') format('woff');
+}
+
+$bg-color: #1A1F29;
+$bg-dark-color: #12151a;
+$font-color: #FFF;
+$main-font: 'neue-haas-light';
+$title-font: 'neue-haas-roman';
+$title-size: 5vw;
+$font-size: 1vw;

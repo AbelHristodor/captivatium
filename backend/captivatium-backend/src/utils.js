@@ -3,7 +3,6 @@ const winston = require('winston');
 
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-
 // Configuring Logger
 const logger = winston.createLogger({
   level: 'info',
@@ -17,7 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-
 // Generic Error Handler
 class ErrorHandler extends Error {
   constructor(statusCode, message) {
@@ -26,7 +24,6 @@ class ErrorHandler extends Error {
     this.message = message;
   }
 }
-
 
 module.exports = {
   ErrorHandler,

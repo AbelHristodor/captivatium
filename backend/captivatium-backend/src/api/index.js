@@ -16,8 +16,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   useCreateIndex: true,
   useFindAndModify: true,
   useUnifiedTopology: true
-}).then(() => utils.logger('Connected to DB')).catch((error) => utils.logger(error));
-
+}).then(() => utils.logger.info('Connected to DB')).catch((error) => utils.logger.error(error));
 
 // Defining Mongoose Schema
 const imageSchema = new mongoose.Schema({
@@ -33,7 +32,6 @@ const imageSchema = new mongoose.Schema({
 
 // Defining mongoose model
 const Image = mongoose.model('Image', imageSchema);
-
 
 // Returns all files uploaded to s3 --> not efficient
 // TODO: Return all elements from mongo collection instead since we keep
@@ -55,6 +53,5 @@ router.post('/upload', aws_service.upload.array('file', 5), ash(async (req, res,
     }).catch(next);
   });
 }));
-
 
 module.exports = router;

@@ -10,7 +10,6 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const app = express();
 const api = require('./api');
 
-
 // Allows only requests from a list of domains
 const whitelist = ['http://localhost:4000', 'http://localhost:3000']; // white list consumers
 const corsOptions = {

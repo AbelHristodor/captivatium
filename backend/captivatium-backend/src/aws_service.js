@@ -7,7 +7,6 @@ const multerS3 = require('multer-s3');
 
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-
 // AWS configuration
 aws.config.setPromisesDependency();
 aws.config.update({
@@ -15,7 +14,6 @@ aws.config.update({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   region: process.env.AWS_REGION
 });
-
 
 // Gets one image from S3 --> pretty useless - learning purposes
 const getOne = async (filename) => {
@@ -30,7 +28,6 @@ const getOne = async (filename) => {
   }).promise();
 };
 
-
 // Gets all images from s3 --> pretty useless - learning purposes
 const getAll = async () => {
   const getParams = {
@@ -43,7 +40,6 @@ const getAll = async () => {
   }).promise();
 };
 
-
 // Filtering Images, accepting jpegs and pngs
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -52,7 +48,6 @@ const fileFilter = (req, file, cb) => {
     cb(null, false);
   }
 };
-
 
 // Multer S3 Config
 const multerS3Config = multerS3({
@@ -65,12 +60,10 @@ const multerS3Config = multerS3({
   limits: { fileSize: 1024 * 1024 * 50 }
 });
 
-
 const upload = multer({
   storage: multerS3Config,
   fileFilter
 });
-
 
 module.exports = {
   getOne,

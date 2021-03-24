@@ -7,12 +7,14 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "lint": "eslint --fix src",
-    "test": "mecha --exit"
+    "test": "mocha test/**/*.js --exit"
   },
   "author": "Abel Hristodor",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.868.0",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

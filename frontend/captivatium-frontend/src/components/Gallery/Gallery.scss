@@ -5,4 +5,26 @@
         font-family: $title-font;
         font-size: $title-size;
     }
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    .categories li {
+        background-color: inherit;
+        border: none !important;
+        a {
+            text-decoration: none;
+            color: lightgray;
+            transition: color .2s ease-in-out;
+            
+            &:hover {
+                color: #FFF;
+            }
+
+            &:focus {
+                color: #FFF;
+            }
+        }
+    }
 }

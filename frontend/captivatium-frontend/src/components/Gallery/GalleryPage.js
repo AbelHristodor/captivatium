@@ -26,7 +26,7 @@ export default function GalleryPage() {
 
     const getThumbnailContent = (item) => {
         return (
-          <img src={item.thumbnail} width={200} alt={item.name}/>
+          <img src={item.thumbnail} width={200} height="auto" alt={item.name}/>
         );
       }
 
@@ -46,7 +46,9 @@ export default function GalleryPage() {
                 </Col>
             </Row>
             <Row className="gallery">
-                <PhotoSwipeGallery items={urls} thumbnailContent={getThumbnailContent}/>
+                <Col sm="12">
+                    <PhotoSwipeGallery items={urls} thumbnailContent={getThumbnailContent}/>
+                </Col>
             </Row>
         </Container>
     )

@@ -24,22 +24,24 @@ router.get('/s3/all', ash(async (req, res, next) => {
 }));
 
 // Upload file to S3 then save its name and url to mongodb
-router.put('/images/upload', aws_service.upload.single('file'), ash(async (req, res, next) => {
-    // Getting thumbnail's url from the aws s3 url of the source image
-    let thumbnail = req.file.location.replace('captivatium-images', 'captivatium-images-resized');
-    const prepend = 'resized-';
-    const append = encodeURI(req.file.originalname);
-    thumbnail = thumbnail.replace(append, prepend.concat(append));
+router.put('/images/upload', aws_service.upload.array('files', 5), ash(async (req, res, next) => {
+    req.files.each((file) => {
+        // Getting thumbnail's url from the aws s3 url of the source image
+        let thumbnail = file.location.replace('captivatium-images', 'captivatium-images-resized');
+        const prepend = 'resized-';
+        const append = encodeURI(file.originalname);
+        thumbnail = thumbnail.replace(append, prepend.concat(append));
 
-    probe(req.file.location).then((img) => {
-        Image.create({
-            title: req.file.originalname,
-            src: req.file.location,
-            resolution: [img.width, img.height],
-            thumbnail
-        }).then(() => {
-            res.status(201).send();
-        }).catch(next);
+        probe(file.location).then((img) => {
+            Image.create({
+                title: file.originalname,
+                src: file.location,
+                resolution: [img.width, img.height],
+                thumbnail
+            }).then(() => {
+                res.status(201).send();
+            }).catch(next);
+        });
     });
 }));
 

@@ -5,8 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import { PhotoSwipeGallery } from 'react-photoswipe';
 
-import 'react-photoswipe/lib/photoswipe.css';
 import './Gallery.scss';
+import './photoswipe.scss';
 
 export default function GalleryPage() {
     const [urls, setUrls] = useState([]);
@@ -26,7 +26,7 @@ export default function GalleryPage() {
 
     const getThumbnailContent = (item) => {
         return (
-          <img src={item.thumbnail} width={200} height="auto" alt={item.name}/>
+          <img src={item.thumbnail} width={200} height="auto" alt={item.name} loading="lazy" />
         );
       }
 
@@ -47,7 +47,7 @@ export default function GalleryPage() {
             </Row>
             <Row className="gallery">
                 <Col sm="12">
-                    <PhotoSwipeGallery items={urls} thumbnailContent={getThumbnailContent}/>
+                    <PhotoSwipeGallery items={urls} thumbnailContent={getThumbnailContent} />
                 </Col>
             </Row>
         </Container>

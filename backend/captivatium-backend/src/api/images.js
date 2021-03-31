@@ -25,7 +25,15 @@ router.get('/s3/all', ash(async (req, res, next) => {
 
 // Upload file to S3 then save its name and url to mongodb
 router.put('/images/upload', aws_service.upload.array('files', 5), ash(async (req, res, next) => {
+    // Getting categories
+    const categories = JSON.parse(req.body.categories);
+
+    // Starting looping through files
+    let i = 0;
     req.files.forEach((file) => {
+        const category = categories[i];
+        i += 1;
+
         // Getting thumbnail's url from the aws s3 url of the source image
         let thumbnail = file.location.replace('captivatium-images', 'captivatium-images-resized');
         const prepend = 'resized-';
@@ -37,6 +45,7 @@ router.put('/images/upload', aws_service.upload.array('files', 5), ash(async (re
                 title: file.originalname,
                 src: file.location,
                 resolution: [img.width, img.height],
+                category,
                 thumbnail
             }).then(() => {
                 res.status(201).send();

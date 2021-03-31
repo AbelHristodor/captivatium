@@ -32,6 +32,7 @@ app.use(morgan(process.env.LOGGER_FORMAT));
 app.use(helmet());
 app.use(cors(corsOptions));
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // API routes

@@ -11,6 +11,10 @@ const imageSchema = new mongoose.Schema({
         required: true
     },
     resolution: Array,
+    category: {
+        type: String,
+        required: false,
+    },
     thumbnail: {
         type: String,
         required: true

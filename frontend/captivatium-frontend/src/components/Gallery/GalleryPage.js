@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Fade from 'react-reveal/Fade';
 import Row from 'react-bootstrap/Row';
 
-
 import 'photoswipe/dist/photoswipe.css'
 import 'photoswipe/dist/default-skin/default-skin.css'
 import './Gallery.scss';
@@ -20,14 +19,8 @@ export default function GalleryPage() {
     useEffect(() => {
         axios.get('http://localhost:4000/api/images/all')
             .then((response) => {
-                const items = response.data.map((item) => {
-                    let [w, h] = item.resolution;
-                    item.w = w;
-                    item.h = h;
-                    return item;
-                })
-                setOriginalImages(items);
-                setImages(items);
+                setOriginalImages(response.data);
+                setImages(response.data);
             });
     }, [])
 
@@ -43,17 +36,15 @@ export default function GalleryPage() {
             <Row className="categories-wrapper mt-2">
                 <Col sm="12" className="">
                     <ul className="categories list-group list-group-horizontal d-flex justify-content-center">
-                        <li className="category-item list-group-item" data-filter="all"><a href="#asd" onClick={() => showCategory(0)}>All</a></li>
-                        <li className="category-item list-group-item" data-filter="1"><a href="#das" onClick={() => showCategory(1)}>Landscapes</a></li>
-                        <li className="category-item list-group-item" data-filter="2"><a href="#dd" onClick={() => showCategory(2)}>Portraits</a></li>
+                        <li className="category-item list-group-item"><button onClick={() => showCategory(0)}>All</button></li>
+                        <li className="category-item list-group-item"><button onClick={() => showCategory(1)}>Landscapes</button></li>
+                        <li className="category-item list-group-item"><button onClick={() => showCategory(2)}>Portraits</button></li>
                     </ul>
                 </Col>
             </Row>
             <Row className="gallery">
-                <Col sm="12 flex-gallery">
-
+                <Col sm="12" className="flex-gallery">
                     { PhotoGallery(images) }
- 
                 </Col>
             </Row>
         </Container>
@@ -70,9 +61,8 @@ const PhotoGallery = (items) => {
                         <Item
                             original={item.src}
                             thumbnail={item.thumbnail}
-                            width={item.w}
-                            height={item.h}
-                            
+                            width={item.resolution[0]}
+                            height={item.resolution[1]}
                         >
                             {({ ref, open }) => (
                                 <div className="filtr-item">

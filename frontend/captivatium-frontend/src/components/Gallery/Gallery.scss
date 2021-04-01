@@ -9,10 +9,12 @@
     .categories li {
         background-color: inherit;
         border: none !important;
-        a {
-            text-decoration: none;
+        button {
+            border: 0;
+            padding: 0;
             color: lightgray;
-            transition: color .2s ease-in-out;
+            background-color: inherit;
+            transition: color .15s ease-in-out;
             
             &:hover {
                 color: #FFF;

@@ -34,7 +34,6 @@ export default function MyNav() {
                 <Navbar.Toggle></Navbar.Toggle>
                 <Navbar.Collapse>
                     <Nav className="navbar-menu ml-auto" activeKey={useLocation.name}>
-                        <NavLink className="nav-link" activeClassName="active" to="/about" href="#home">about <div className="underline"></div></NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/gallery" href="#link">gallery <div className="underline"></div></NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/projects" href="#link">projects <div className="underline"></div></NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/contact" href="#link">contact <div className="underline"></div></NavLink>

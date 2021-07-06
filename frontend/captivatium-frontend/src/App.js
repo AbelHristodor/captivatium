@@ -1,6 +1,5 @@
 import MyNav from './components/Nav/MyNav';
 import Footer from './components/Footer/Footer';
-import About from "./components/About/About";
 import GalleryPage from "./components/Gallery/GalleryPage";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
@@ -19,7 +18,6 @@ function App() {
       <MyNav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
         <Route exact path="/gallery" component={GalleryPage} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/contact" component={Contact} />

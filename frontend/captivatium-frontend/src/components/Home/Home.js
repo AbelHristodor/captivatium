@@ -14,11 +14,13 @@ export default function Home() {
                         <div className="text-wrapper">
                             <h1 className="title">Web Development<br />&amp; Photography</h1>
                             <hr className="ruler" />
-                            <p>I'm a Digital Design Director, most recently at MediaMonks <br />
-                            and TBWA, working with brands including Adidas, Netflix, <br />
-                            Airbnb and Polaroid. My role involves a mix of art direction, <br />
-                            hands on design, mentoring and improving team process.<br />
-                            Currently freelance.
+                            <p>I'm a self-taught Web Developer and Photographer <br />
+                            with a big passion for developing both Frontend and Backend<br />
+                            web apps, even though i prefer backend stuff. <br />
+                            I'm also a very (and I mean very) commited photographer, <br />
+                            I basically never leave home without my camera!<br />
+                            Currently a Computer Science student based in Italy.
+                            <br />
                             </p>
                         </div>
                     </Col>

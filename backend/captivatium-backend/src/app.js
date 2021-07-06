@@ -9,6 +9,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const app = express();
 const imagesApi = require('./api/images');
+const emailApi = require('./api/email');
 const logger = require('./utils/logger');
 
 // Allows only requests from a list of domains
@@ -37,6 +38,7 @@ app.use(express.json());
 
 // API routes
 app.use('/api', imagesApi);
+app.use('/email', emailApi);
 
 // Route not found middleware
 // eslint-disable-next-line no-unused-vars

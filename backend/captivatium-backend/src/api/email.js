@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 });
 
 router.post('/send', ash(async (req, res) => {
-    let htmlEmail = fs.readFile(path.resolve(__dirname, process.env.CONTACT_MAIL_PATH), 'utf8');
+    let htmlEmail = fs.readFileSync(path.resolve(__dirname, process.env.CONTACT_MAIL_PATH), 'utf8');
     htmlEmail = htmlEmail.replace('$message', req.body.message);
 
     const mailOptions = {
@@ -35,11 +35,7 @@ router.post('/send', ash(async (req, res) => {
     };
 
     transporter.sendMail(mailOptions, (err, data) => {
-        if (err) {
-            throw new ErrorHandler();
-        } else {
-            res.status(200).send(data);
-        }
+        if (err) { throw new ErrorHandler(); } else { res.status(200).send(data); }
     });
 }));
 

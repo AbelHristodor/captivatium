@@ -35,7 +35,7 @@ export default function Contact() {
                                 <label>Email</label>
                             </div>
                             <div class="form-group">
-                                <textarea type="text" required value={message} onChange={(e) => setMessage(e.target.value)}/>
+                                <input type="text" required value={message} onChange={(e) => setMessage(e.target.value)}/>
                                 <label>Message</label>
                             </div>
                             <button type="submit" class="send">Send</button>

@@ -69,7 +69,7 @@ app.use((error, req, res, next) => {
 
 // Starting Server
 const port = process.env.EXPRESS_PORT || 3000;
-const host = process.env.EXPRESS_HOST || 'localhost';
+const host = process.env.EXPRESS_HOST || '127.0.0.1';
 
 app.listen(port, () => {
     /* eslint-disable no-console */

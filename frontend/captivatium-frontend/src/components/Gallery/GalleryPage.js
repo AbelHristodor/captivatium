@@ -19,30 +19,33 @@ export default function GalleryPage() {
     useEffect(() => {
         axios.get('http://localhost:4000/api/images/all')
             .then((response) => {
-                setOriginalImages(response.data);
-                setImages(response.data);
+                setOriginalImages(shuffle(response.data));
+                setImages(shuffle(response.data));
             });
     }, [])
 
     const showCategory = (category) => {
+        setImages([]);
         const items = originalImages.filter((image) => {
-            return image.category === category.toString();
+            return category !== 0 ? image.category === category.toString() : image;
+
         })
-        setImages(items);
+        setImages(shuffle(items));
     }
 
     return (
         <Container fluid className="gallery-wrapper">
-            <Row className="categories-wrapper mt-2">
+            <Row className="categories-wrapper mt-4 mb-2">
                 <Col sm="12" className="">
                     <ul className="categories list-group list-group-horizontal d-flex justify-content-center">
                         <li className="category-item list-group-item"><button onClick={() => showCategory(0)}>All</button></li>
                         <li className="category-item list-group-item"><button onClick={() => showCategory(1)}>Landscapes</button></li>
                         <li className="category-item list-group-item"><button onClick={() => showCategory(2)}>Portraits</button></li>
+                        <li className="category-item list-group-item"><button onClick={() => showCategory(3)}>Details</button></li>
                     </ul>
                 </Col>
             </Row>
-            <Row className="gallery">
+            <Row className="gallery mt-4">
                 <Col sm="12" className="flex-gallery">
                     { PhotoGallery(images) }
                 </Col>
@@ -53,11 +56,12 @@ export default function GalleryPage() {
 
 
 const PhotoGallery = (items) => {
+    
     return (
         <Gallery>
             { items.map((item) => {
                 return (
-                    <Fade up duration={1700} key={item.title}>
+                    <Fade up duration={500} key={item.title}>
                         <Item
                             original={item.src}
                             thumbnail={item.thumbnail}
@@ -76,3 +80,15 @@ const PhotoGallery = (items) => {
         </Gallery>
     )
 }
+
+const shuffle = (arr) => {
+    var j, x, index;
+    for (index = arr.length - 1; index > 0; index--) {
+        j = Math.floor(Math.random() * (index + 1));
+        x = arr[index];
+        arr[index] = arr[j];
+        arr[j] = x;
+    }
+    return arr;
+}
+

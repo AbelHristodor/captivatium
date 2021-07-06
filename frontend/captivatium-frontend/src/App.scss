@@ -8,9 +8,15 @@ html {
     min-height: 100%;
 }
 body { 
-    overflow: hidden;
+    overflow: auto;
     min-height: 100%;
     background-color: $bg-color !important;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
 }
 
 @media only screen and (max-width: 992px) {

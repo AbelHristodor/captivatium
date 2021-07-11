@@ -73,10 +73,8 @@
 @media only screen and (max-width: 992px) {
     .contact-wrapper {
         margin-top: 6vw !important;
-        margin-left: 10vw !important;
-        margin-right: 10vw !important;
-        .text-wrapper {
-        }   
+        margin-left: 15vw !important;
+        margin-right: 15vw !important; 
     }
     input, textarea {
         background-color: $bg-dark-color !important;
@@ -85,5 +83,14 @@
         &:hover {
             background-color: $bg-dark-color !important;
         }
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    .contact-wrapper {
+        margin-top: 6vw !important;
+        margin-left: 7vw !important;
+        margin-right: 7vw !important;
+
     }
 }

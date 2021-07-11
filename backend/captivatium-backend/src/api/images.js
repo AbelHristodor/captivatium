@@ -60,7 +60,8 @@ router.get('/images/all', ash(async (req, res, next) => {
     await Image.find({}, {
         _id: 0, __v: 0
     }).then((data) => {
-        res.status(200).send(data);
+        const toSend = data.filter((image) => parseInt(image.category, 10) >= 0);
+        res.status(200).send(toSend);
     }).catch(next);
 }));
 

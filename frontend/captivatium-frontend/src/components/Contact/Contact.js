@@ -31,7 +31,7 @@ export default function Contact() {
     return (
         <Container fluid>
             <Row>
-                <Col md="12" sm="12" className="contact-wrapper">
+                <Col sm="12" className="contact-wrapper">
                     <div className="text-wrapper">
                         <h1>Want to get in touch?</h1> 
                     </div>

@@ -35,13 +35,13 @@ export default function MyNav() {
                 <Navbar.Collapse>
                     <Nav className="navbar-menu ml-auto" activeKey={useLocation.name}>
                         <NavLink className="nav-link" activeClassName="active" to="/gallery" href="#link">gallery <div className="underline"></div></NavLink>
-                        <NavLink className="nav-link" activeClassName="active" to="/projects" href="#link">projects <div className="underline"></div></NavLink>
+                        <NavLink className="nav-link" activeClassName="active" to="/about" href="#link">about me<div className="underline"></div></NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/contact" href="#link">contact <div className="underline"></div></NavLink>
                     </Nav>
                 </Navbar.Collapse>
                 <Nav className="navbar-icons">
-                    <a className="mr-3" href="https://instagram.com/captivatium" target="_blank" rel="noreferrer"><FaInstagram /></a>
-                    <a href="https://github.com/AbelHristodor" target="_blank" rel="noreferrer"><FaGithub /></a>
+                    <a className="mr-3" href="https://instagram.com/captivatium" target="_blank" rel="noreferrer" alt="Instagram"><FaInstagram /></a>
+                    <a href="https://github.com/AbelHristodor" target="_blank" rel="noreferrer" alt="Github"><FaGithub /></a>
                 </Nav>
             </Navbar>
         </div>

@@ -2,10 +2,10 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import HomeImage from '../../assets/images/home_image.png';
 import "./Home.scss";
 
 export default function Home() {
+    const HomeImage = "https://captivatium-images.s3.eu-central-1.amazonaws.com/home_image.png";
     return (
         <div className="home-wrapper">
             <Container fluid>

@@ -70,7 +70,7 @@ const PhotoGallery = (items) => {
                         >
                             {({ ref, open }) => (
                                 <div className="filtr-item">
-                                    <img ref={ref} onClick={open} src={item.thumbnail} alt={item.title}/>
+                                    <img ref={ref} onClick={open} src={item.thumbnail} alt={item.title} rel="preload"/>
                                 </div>
                             )}
                         </Item>

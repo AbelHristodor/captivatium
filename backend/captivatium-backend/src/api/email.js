@@ -24,13 +24,14 @@ const transporter = nodemailer.createTransport({
 
 router.post('/send', ash(async (req, res) => {
     let htmlEmail = fs.readFileSync(path.resolve(__dirname, process.env.CONTACT_MAIL_PATH), 'utf8');
-    htmlEmail = htmlEmail.replace('$message', req.body.message);
+    const { message, email, name } = req.body;
+    htmlEmail = htmlEmail.replace('$message', message).replace('$email', email);
 
     const mailOptions = {
-        from: req.body.email,
+        from: email,
         to: process.env.MAIL_USERNAME,
-        subject: process.env.CONTACT_MAIL_SUBJECT.replace('$user', req.body.name),
-        text: req.body.message,
+        subject: process.env.CONTACT_MAIL_SUBJECT.replace('$user', name),
+        text: message,
         html: htmlEmail
     };
 

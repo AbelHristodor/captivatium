@@ -77,7 +77,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Starting Server
-const port = process.env.EXPRESS_PORT || 3000;
+const port = process.env.PORT || 4000;
 const host = process.env.EXPRESS_HOST || '127.0.0.1';
 
 app.listen(port, () => {

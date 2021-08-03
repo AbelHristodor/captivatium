@@ -5,12 +5,12 @@ const helmet = require('helmet');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
-const imagesApi = require('./api/images');
-const emailApi = require('./api/email');
-const logger = require('./utils/logger');
+const imagesApi = require('./src/api/images');
+const emailApi = require('./src/api/email');
+const logger = require('./src/utils/logger');
 
 // Allows only requests from a list of domains
 const whitelist = ['http://localhost:4000', 'http://localhost:3000']; // white list consumers
@@ -71,9 +71,9 @@ app.use((error, req, res, next) => {
 
 if (process.env.NODE_ENV === 'production') {
     // Set the static assets folder (ie, client build)
-    app.use(express.static('../client/build'));
+    app.use(express.static('/client/build'));
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve('../client/build/index.html'));
+        res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
     });
 }
 

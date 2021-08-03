@@ -12,6 +12,9 @@
   },
   "author": "Abel Hristodor",
   "license": "ISC",
+  "engines": {
+    "node": "10.16.0"
+  },
   "dependencies": {
     "aws-sdk": "^2.868.0",
     "chai": "^4.3.4",

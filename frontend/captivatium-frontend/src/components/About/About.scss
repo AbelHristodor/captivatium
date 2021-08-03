@@ -1,0 +1,112 @@
+@import '../../variables.scss';
+
+.about-wrapper {
+    .image {
+        width: 100%;
+        height: auto;
+    }
+    div.row.main-section {
+        margin-top: 5%;
+        margin-left: 10%;
+        padding-bottom: 3%;
+    }
+    .title {
+        font-family: $title-font;
+        font-size: $title-size;
+    }
+
+    p {
+        font-family: $main-font;
+        font-size: $font-size;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    .contact-section {
+        padding: 2vw 0;
+        background-color: $bg-dark-color;
+
+        .footer-contact {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: space-between;
+            justify-content: center;
+            
+            h2 {
+                font-size: 2.5vw;
+                font-family: $title-font;
+                margin-right: 3vw;
+            }
+            button {
+                border: 0;
+                font-family: $main-font;
+                background-color: #FFF;
+                color: $bg-dark-color;
+                border: none;
+                box-shadow: none;
+                padding: .5vw 1.2vw;
+                transition: background-color .2s ease-in-out, color .2s ease-in-out;
+
+                &:hover {
+                    background-color: $bg-dark-color;
+                    color: #FFF;
+                }
+            }   
+        }
+        
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        .image {
+            width: 50% !important;
+            
+        }
+        .description {
+            margin-top: 1vh;
+        }
+    }
+    p {
+        font-size: 2vw !important;
+    }
+    .about-wrapper {
+        .row {
+            margin-right: 10%;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 667px) {
+    .main-section {
+        .image {
+            width: 100% !important;
+        }
+    }
+    p {
+        font-size: 3.5vw !important;
+    }
+    
+    h2.contact-text{
+        font-size: 5vw !important;
+    }
+    .contact-section {
+        margin-left: 10% !important;
+        .footer-contact {
+            flex-direction: column !important;
+            flex-flow: column;
+
+            button {
+                padding: 1vw 2vw !important;
+            }
+        }
+    }
+
+    
+}

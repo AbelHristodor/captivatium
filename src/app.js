@@ -69,6 +69,13 @@ app.use((error, req, res, next) => {
     });
 });
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.resolve('../../frontend/captivatium-frontend/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../../fronted/captivatium-frontend/build', 'index.html'));
+    });
+}
+
 // Starting Server
 const port = process.env.EXPRESS_PORT || 3000;
 const host = process.env.EXPRESS_HOST || '127.0.0.1';

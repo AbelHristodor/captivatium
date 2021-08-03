@@ -26,11 +26,11 @@ router.post('/send', ash(async (req, res) => {
     let htmlEmail = fs.readFileSync(path.resolve(__dirname, process.env.CONTACT_MAIL_PATH), 'utf8');
     const { message, email, name } = req.body;
     htmlEmail = htmlEmail.replace('$message', message).replace('$email', email);
-
+    const subject = 'Captivatium.com - Contact Message from: $user';
     const mailOptions = {
         from: email,
         to: process.env.MAIL_USERNAME,
-        subject: process.env.CONTACT_MAIL_SUBJECT.replace('$user', name),
+        subject: subject.replace('$user', name),
         text: message,
         html: htmlEmail
     };

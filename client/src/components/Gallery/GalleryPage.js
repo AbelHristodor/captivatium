@@ -17,7 +17,7 @@ export default function GalleryPage() {
     const [originalImages, setOriginalImages] = useState([]); 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/images/all')
+        axios.get('/api/images/all')
             .then((response) => {
                 setOriginalImages(shuffle(response.data));
                 setImages(shuffle(response.data));

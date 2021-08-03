@@ -12,7 +12,7 @@ export default function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4000/email/send", { name, email, message })
+        axios.post("/email/send", { name, email, message })
             .then((data) => {
                 if (data.status === 200 && data.data.response.startsWith('2')) { 
                     toast.success("Message was sent successfully ✌");

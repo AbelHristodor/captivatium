@@ -13,7 +13,7 @@ const emailApi = require('./src/api/email');
 const logger = require('./src/utils/logger');
 
 // Allows only requests from a list of domains
-const whitelist = ['http://localhost:4000', 'http://localhost:3000']; // white list consumers
+const whitelist = ['https://captivatium.herokuapp.com/', 'http://localhost:4000']; // white list consumers
 const corsOptions = {
     origin(origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {

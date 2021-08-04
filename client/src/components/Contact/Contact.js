@@ -9,7 +9,7 @@ export default function Contact() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const url = `http://localhost:${process.env.PORT || 4000}/email/send`;
+    const url = `/email/send`;
 
 
     const handleSubmit = (e) => {

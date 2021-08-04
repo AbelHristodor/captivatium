@@ -31,6 +31,12 @@ const corsOptions = {
 // Standard middlewares
 app.use(morgan(process.env.LOGGER_FORMAT));
 app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        'img-src': ["'self'", 'https://captivatium-images.s3.eu-central-1.amazonaws.com']
+    }
+}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));

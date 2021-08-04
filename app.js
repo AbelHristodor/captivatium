@@ -34,7 +34,8 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
     directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'img-src': ["'self'", 'https://captivatium-images.s3.eu-central-1.amazonaws.com', 'https://captivatium-images-resized.s3.eu-central-1.amazonaws.com', '*']
+        'img-src': ["'self'", 'https://captivatium-images.s3.eu-central-1.amazonaws.com', 'https://captivatium-images-resized.s3.eu-central-1.amazonaws.com', '*'],
+        'connect-src': ['*']
     }
 }));
 app.use(cors(corsOptions));

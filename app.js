@@ -35,6 +35,7 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 if (process.env.NODE_ENV === 'production') {
     // Set the static assets folder (ie, client build)
     app.use(express.static('./client/build'));
@@ -74,7 +75,6 @@ app.use((error, req, res, next) => {
         }
     });
 });
-
 
 // Starting Server
 const port = process.env.PORT || 4000;

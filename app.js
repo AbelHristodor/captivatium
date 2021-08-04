@@ -35,7 +35,13 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+if (process.env.NODE_ENV === 'production') {
+    // Set the static assets folder (ie, client build)
+    app.use(express.static('./client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
 // API routes
 app.use('/api', imagesApi);
 app.use('/email', emailApi);
@@ -68,13 +74,7 @@ app.use((error, req, res, next) => {
         }
     });
 });
-if (process.env.NODE_ENV === 'production') {
-    // Set the static assets folder (ie, client build)
-    app.use(express.static('./client/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
-}
+
 
 // Starting Server
 const port = process.env.PORT || 4000;

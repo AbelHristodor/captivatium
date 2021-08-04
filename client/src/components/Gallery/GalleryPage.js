@@ -9,7 +9,6 @@ import Row from 'react-bootstrap/Row';
 import 'photoswipe/dist/photoswipe.css'
 import 'photoswipe/dist/default-skin/default-skin.css'
 import './Gallery.scss';
-import logger from '../../../../src/utils/logger';
 
 export default function GalleryPage() {
     const [images, setImages] = useState([]);
@@ -20,7 +19,7 @@ export default function GalleryPage() {
     useEffect(() => {
         axios.get('/api/images/all')
             .then((response) => {
-                logger.info(response)
+                console.log(response);
                 setOriginalImages(shuffle(response.data));
                 setImages(shuffle(response.data));
             });

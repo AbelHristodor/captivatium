@@ -9,10 +9,12 @@ export default function Contact() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const url = `http://localhost:${process.env.PORT || 4000}/email/send`;
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("/email/send", { name, email, message })
+        axios.post(url, { name, email, message })
             .then((data) => {
                 if (data.status === 200 && data.data.response.startsWith('2')) { 
                     toast.success("Message was sent successfully ✌");

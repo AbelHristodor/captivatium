@@ -15,9 +15,10 @@ export default function GalleryPage() {
 
     // Keep track of the original images loaded from the api so we don't lose them when filtering
     const [originalImages, setOriginalImages] = useState([]); 
+    const url = `http://localhost:${process.env.PORT || 4000}/api/images/all`;
 
     useEffect(() => {
-        axios.get('/api/images/all')
+        axios.get(url)
             .then((response) => {
                 setOriginalImages(shuffle(response.data));
                 setImages(shuffle(response.data));

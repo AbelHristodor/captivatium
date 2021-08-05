@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bd7f1831.chunk.css",
+    "main.js": "/static/js/main.97c91427.chunk.js",
+    "main.js.map": "/static/js/main.97c91427.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.aed163e1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.aed163e1.js.map",
+    "static/css/2.5ca9b759.chunk.css": "/static/css/2.5ca9b759.chunk.css",
+    "static/js/2.23eaa487.chunk.js": "/static/js/2.23eaa487.chunk.js",
+    "static/js/2.23eaa487.chunk.js.map": "/static/js/2.23eaa487.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.5ca9b759.chunk.css.map": "/static/css/2.5ca9b759.chunk.css.map",
+    "static/css/main.bd7f1831.chunk.css.map": "/static/css/main.bd7f1831.chunk.css.map",
+    "static/js/2.23eaa487.chunk.js.LICENSE.txt": "/static/js/2.23eaa487.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/static/media/NeueHaasDisplayRoman.bf8caa25.woff",
+    "static/media/default-skin.css": "/static/media/default-skin.f64c3af3.svg",
+    "static/media/logo_navbar.268a804b.svg": "/static/media/logo_navbar.268a804b.svg",
+    "static/media/logo_navbar_mobile.c2389d30.svg": "/static/media/logo_navbar_mobile.c2389d30.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aed163e1.js",
+    "static/css/2.5ca9b759.chunk.css",
+    "static/js/2.23eaa487.chunk.js",
+    "static/css/main.bd7f1831.chunk.css",
+    "static/js/main.97c91427.chunk.js"
+  ]
+}

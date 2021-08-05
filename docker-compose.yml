@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        image: capt-backend
+        volumes:
+            - ./backend/:/usr/src/app
+            - /usr/src/app/node_modules
+        ports: 
+            - "4000:4000"
+        env_file: ./backend/.env
+        environment:
+            - NODE_ENV=development
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        image: capt-frontend
+        command: npm start
+        volumes: 
+            - ./frontend/:/usr/src/app
+            - /usr/src/app/node_modules
+        depends_on: 
+            - backend
+        ports:
+            - "3000:3000"
+        networks:
+            - capt-network
+
+networks:
+    capt-network:
+        driver: bridge
+
+volumes:
+    node-modules:
+    web-root:
+        driver: local

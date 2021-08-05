@@ -13,7 +13,7 @@ const emailApi = require('./src/api/email');
 const logger = require('./src/utils/logger');
 
 // Allows only requests from a list of domains
-const whitelist = ['https://captivatium.herokuapp.com/', 'http://localhost:4000', '*']; // white list consumers
+const whitelist = ['https://localhost:3000', 'http://localhost:4000']; // white list consumers
 const corsOptions = {
     origin(origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
@@ -32,7 +32,10 @@ const corsOptions = {
 app.use(morgan(process.env.LOGGER_FORMAT));
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
-    contentSecurityPolicy: false
+    directives: {
+        'script-src': ["'self'", 'unsafe-inline'],
+        'image-src': ["'self'", 'unsafe-inline', '*'],
+    }
 }));
 app.use(cors(corsOptions));
 app.use(cookieParser());

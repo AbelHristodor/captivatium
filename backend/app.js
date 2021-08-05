@@ -35,6 +35,7 @@ app.use(helmet.contentSecurityPolicy({
     directives: {
         'script-src': ["'self'", 'unsafe-inline'],
         'image-src': ["'self'", 'unsafe-inline', '*'],
+        'script-src-elem': ["'self'", 'unsafe-inline', '*']
     }
 }));
 app.use(cors(corsOptions));

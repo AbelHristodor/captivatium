@@ -24,7 +24,7 @@ router.get('/s3/all', ash(async (req, res, next) => {
 }));
 
 // Upload file to S3 then save its name and url to mongodb
-router.put('/images/upload', aws_service.upload.array('files', 15), ash(async (req, res, next) => {
+router.put('/upload', aws_service.upload.array('files', 15), ash(async (req, res, next) => {
     // Getting categories
     const categories = JSON.parse(req.body.categories);
 
@@ -55,7 +55,7 @@ router.put('/images/upload', aws_service.upload.array('files', 15), ash(async (r
 }));
 
 // Returns the urls and names of all images
-router.get('/images/all', ash(async (req, res, next) => {
+router.get('/all', ash(async (req, res, next) => {
     // Get all, ignore _id and __v fields
     await Image.find({}, {
         _id: 0, __v: 0
@@ -65,7 +65,7 @@ router.get('/images/all', ash(async (req, res, next) => {
     }).catch(next);
 }));
 
-router.delete('/images/all', ash(async (req, res, next) => {
+router.delete('/all', ash(async (req, res, next) => {
     await Image.deleteMany().then((data) => {
         res.status(200).send(data);
     }).catch(next);

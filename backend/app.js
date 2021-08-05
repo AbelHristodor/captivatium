@@ -51,8 +51,8 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 // API routes
-app.use('/api', imagesApi);
-app.use('/email', emailApi);
+app.use('/api/images', imagesApi);
+app.use('/api/email', emailApi);
 
 // Route not found middleware
 // eslint-disable-next-line no-unused-vars

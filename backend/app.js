@@ -33,6 +33,7 @@ app.use(morgan(process.env.LOGGER_FORMAT));
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
     directives: {
+        'default-src': ["'self'", 'unsafe-inline'],
         'script-src': ["'self'", 'unsafe-inline'],
         'image-src': ["'self'", 'unsafe-inline', '*'],
         'script-src-elem': ["'self'", 'unsafe-inline', '*']

@@ -12,6 +12,7 @@ const imagesApi = require('./src/api/images');
 const emailApi = require('./src/api/email');
 const logger = require('./src/utils/logger');
 
+
 // Allows only requests from a list of domains
 const whitelist = ['https://localhost:3000', 'http://localhost:4000']; // white list consumers
 const corsOptions = {
@@ -32,25 +33,14 @@ const corsOptions = {
 app.use(morgan(process.env.LOGGER_FORMAT));
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
-    directives: {
-        'default-src': ["'self'", 'unsafe-inline'],
-        'script-src': ["'self'", 'unsafe-inline'],
-        'img-src': ["'self'", 'unsafe-inline', '*'],
-        'script-src-elem': ["'self'", 'unsafe-inline', '*']
-    }
+    ...helmet.contentSecurityPolicy.getDefaultDirectives()
 }));
 app.use(cors(corsOptions));
 app.use(cookieParser());
+app.use(express.static('../frontend/build'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-    // Set the static assets folder (ie, client build)
-    app.use(express.static('../frontend/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-    });
-}
 // API routes
 app.use('/api/images', imagesApi);
 app.use('/api/email', emailApi);
@@ -82,6 +72,10 @@ app.use((error, req, res, next) => {
             stack: error.stack
         }
     });
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
 // Starting Server

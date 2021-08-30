@@ -68,6 +68,7 @@ app.use((error, req, res, next) => {
     res.status(error.statusCode).send({
         error: {
             status: error.statusCode,
+	    route: req.route,
             message: error.message || 'Internal Server Error',
             stack: error.stack
         }

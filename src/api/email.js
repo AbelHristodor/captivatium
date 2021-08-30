@@ -25,18 +25,18 @@ const transporter = nodemailer.createTransport({
 router.post('/send', ash(async (req, res) => {
     let htmlEmail = fs.readFileSync(path.resolve(__dirname, process.env.CONTACT_MAIL_PATH), 'utf8');
     const { message, email, name } = req.body;
-    htmlEmail = htmlEmail.replace('$message', message).replace('$email', email);
-    const subject = 'Captivatium.com - Contact Message from: $user';
+    htmlEmail = htmlEmail.replace('$message', message).replace('$email', email).replace('$name', name);
+    const subject = 'Captivatium.com - Contact Message from: $name';
     const mailOptions = {
         from: email,
         to: process.env.MAIL_USERNAME,
-        subject: subject.replace('$user', name),
+        subject: subject.replace('$name', name),
         text: message,
         html: htmlEmail
     };
 
     transporter.sendMail(mailOptions, (err, data) => {
-        if (err) { throw new ErrorHandler(); } else { res.status(200).send(data); }
+        if (err) { throw new ErrorHandler(500, err); } else { res.status(200).send(data); }
     });
 }));
 

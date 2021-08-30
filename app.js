@@ -12,7 +12,6 @@ const imagesApi = require('./src/api/images');
 const emailApi = require('./src/api/email');
 const logger = require('./src/utils/logger');
 
-
 // Allows only requests from a list of domains
 const whitelist = ['https://localhost:3000', 'http://localhost:4000']; // white list consumers
 const corsOptions = {
@@ -51,7 +50,7 @@ app.use((req, res, next) => {
     // Create error and add some info to it
     const error = new Error('Route not found');
     error.statusCode = 404;
-    error.route = req.route;
+    error.route = req.url;
 
     // Sending error to the errorHandler middleware
     next(error);
@@ -71,7 +70,7 @@ app.use((error, req, res, next) => {
     res.status(error.statusCode).send({
         error: {
             status: error.statusCode,
-	        route: error.route,
+            route: error.route,
             message: error.message || 'Internal Server Error',
             stack: error.stack
         }

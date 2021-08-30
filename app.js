@@ -51,6 +51,7 @@ app.use((req, res, next) => {
     // Create error and add some info to it
     const error = new Error('Route not found');
     error.statusCode = 404;
+    error.route = req.route;
 
     // Sending error to the errorHandler middleware
     next(error);
@@ -64,11 +65,13 @@ app.use((error, req, res, next) => {
     // If status code of error not found then set it to a generic 500 internal server error
     if (!error.statusCode) error.statusCode = 500;
 
+    if (!error.route) error.route = undefined;
+
     // Send error
     res.status(error.statusCode).send({
         error: {
             status: error.statusCode,
-	    route: req.route,
+	        route: error.route,
             message: error.message || 'Internal Server Error',
             stack: error.stack
         }

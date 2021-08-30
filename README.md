@@ -3,7 +3,9 @@ This is my personal brand's website used to share my content with the world as I
 and videography. Hope you like it. 
 
 ## Stack Used
-- Backend: _NodeJS, ExpressJS, MongoDB_ and _AWS S3._ Used _Mocha_ and _Chai_ for some api testing.
+- Backend: _NodeJS, ExpressJS, MongoDB_ and _AWS S3._ Used _Mocha_ and _Chai_ for some api testing. 
+It uses AWS S3 to store video and image files, the latter being resized, compressed and moved to another bucket when uploaded by an _AWS Lambda_ function.
+
 - _ReactJS_ with Bootstrap and some SCSS for the frontend
 
 All deployed on an AWS EC2 Instance, with SSL certificates and CSP.
